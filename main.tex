@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{setspace} % for spacing control
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{tcolorbox}
+\usepackage[backend=biber,style=numeric]{biblatex} 
+\addbibresource{bibliography_CIBB_file.bib}
+\setstretch{1.0}       % single line spacing (default)
+\setlength{\parskip}{0pt}   % no space between paragraphs
+\setlength{\parindent}{0em} % set indentation amount
+
+\makeatletter
+
+\AtBeginDocument{%
+  % Counter `lstlisting' is not defined before `\begin{document}'
+  \newcounter{llabel}[lstlisting]%
+  \renewcommand*{\thellabel}{%
+    \ifnum\value{llabel}<0 %
+      \@ctrerr
+    \else
+      \ifnum\value{llabel}>10 %
+        \@ctrerr
+      \else
+        \protect\ding{\the\numexpr\value{llabel}+201\relax}%
+      \fi
+    \fi
+  }%
+}
+\newlength{\llabelsep}
+\setlength{\llabelsep}{5pt}
+
+\newcommand*{\llabel}[1]{%
+  \begingroup
+    \refstepcounter{llabel}%
+    \label{#1}%
+    \llap{%
+      \thellabel\kern\llabelsep
+      \hphantom{\lst@numberstyle\the\lst@lineno}%
+      \kern\lst@numbersep
+    }%
+  \endgroup
+}
+\makeatother
+
+\geometry{margin=1in}
+\setlength{\parskip}{0em}
+\setlength{\parindent}{0pt}
+
+\title{Assignment 2 \\ \large Computational Fracture Mechanics (WiSe2526)}
+\author{Bagus Alifah Hasyim \\ 108023246468}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Given Data}
+\hspace*{2em}In this section, the parameters value for the material properties, 
+that required by the author to calculate it based on the author's Immatrikulation Nummer, will be defined accordingly. To make
+the calculation detailed and transparent, each parameter will be derived step by step. 
+
+\begin{equation}
+    d_1 = 4, \text{   }\text{   } d_2 = 6, \text{   }\text{   } d_3 = 8
+\end{equation}
+
+\vspace{1em}
+\begin{tcolorbox}[title=Parameter for 1st question]
+  \begin{itemize}
+    \item Plate length b
+    
+    $b = 2.0 + 0.4d_1 = 2.0 + 0.4 \times 4 = 3.6 \text{ mm}$
+
+    \item Plate width h 
+    
+    $h = b = 3.6 \text{ mm}$
+    
+    \item Circular hole radius 
+    
+    $r = b(0.10 + 0.01d_2) = 3.6(0.10 + 0.01 \times 6) = 0.576 \text{ mm}$
+    
+    \item Applied displacement u 
+    
+    $u = 0.1 \times b = 0.1 \times 3.6 = 0.36 \text{ mm}$ 
+    
+    \item Displacement at failure 
+    
+    $u_f = 0.5 \times L $ (where L is the characteristic length of the smallest element) 
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\section{Introduction} 
+
+
+
+\section{Model Set up}
+
+\subsection{Material Properties}
+
+
+\begin{table}[H]
+\centering
+\caption{Stress-strain data}
+\label{tab:FlowCurve}
+\begin{tabular}{lc}
+    \toprule
+    Stress (MPa) & Plastic Strain \\
+    \midrule
+    310 & 0  \\[0.5em]
+    315 & 0.0035  \\[0.5em]
+    325 & 0.0086  \\[0.5em]
+    335 & 0.0163  \\[0.5em]
+    350 & 0.028  \\[0.5em]
+    365 & 0.045  \\[0.5em]
+    400 & 0.1  \\[0.5em]
+    418 & 0.17  \\[0.5em]
+    430 & 0.25  \\
+    \bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+
+
+\subsection{Geometry and Boundary Conditions}
+
+
+
+
+\subsection{Mesh Set Up}
+
+
+\newpage
+\section*{Results and Discussion}
+
+%% ------------------------------------------------------------- %%
+%% ----------------------------- %% QUESTION 1 ----------------------------- %%
+%% ------------------------------------------------------------- %%
+
+\subsection*{Q1: Materal Damage Behavior}
+
+\vspace{1em}
+\begin{tcolorbox}[title=\textbf{Stress Triaxiality}]
+\textit{$\dots$ Ductile damage in Abaqus requires an additional parameter that is not directly provided in the material data: stress triaxiality. Define this parameter, including its mathematical expression, and explain its physical meaning. Then, calculate the appropriate value of stress triaxiality for your simulation based on the given loading condition.}
+\end{tcolorbox}
+
+
+\newpage
+\vspace{1em}
+\begin{tcolorbox}[title=\textbf{Stress-Strain Curve}]
+\textit{$\dots$ Based on your student number, model the plate shown in Figure 1. Then select an appropriate mesh for your case, provide a figure of the generated mesh, and describe the mesh settings you used. After running the simulation with the provided elastic, plastic, and damage material parameters, complete the following tasks:
+\begin{itemize}
+\item Extract the stress–strain curve at the top edge of the plate.
+\item Clearly identify and label the key deformation stages on the curve, including:
+      \begin{itemize}
+        \item Linear elastic regime
+        \item Onset of yielding
+        \item Plastic hardening
+        \item Point of damage initiation
+        \item Material softening leads to final fracture
+      \end{itemize}
+\item Plot the evolution of the damage variable over time and overlay it on the same figure as the stress–strain curve. Describe when damage initiates and explain how the material progressively deteriorates as loading continues.
+\end{itemize}}
+\end{tcolorbox}
+
+
+
+%% ------------------------------------------------------------- %%
+%% ----------------------------- %% QUESTION 2 ----------------------------- %%
+%% ------------------------------------------------------------- %%
+
+\newpage
+\subsection*{Q2: Damage Evolution and Failure Pattern}
+
+\vspace{1em}
+\begin{tcolorbox}[title=\textbf{Visualization}]
+  \textit{...\begin{itemize}
+    \item Visualize damage evolution at several time increments, by providing the contour plots.
+    \item Describe the damage path and explain:
+    \begin{itemize}
+      \item Why do certain elements fail earlier than others,
+      \item How stress concentration influences the observed damage path
+    \end{itemize} 
+  \end{itemize}}
+\end{tcolorbox}
+
+%% ------------------------------------------------------------- %%
+%% ----------------------------- %% QUESTION 3 ----------------------------- %%
+%% ------------------------------------------------------------- %%
+
+\newpage
+\subsection*{Q3: Effect of Hole Shape}
+
+\vspace{1em}
+\begin{tcolorbox}[title=\textbf{Visualization}]
+  \textit{To study geometric effects, modify the baseline model by changing only the shape of the hole while keeping all material parameters, boundary conditions, and loading identical. Create two additional models:
+    \begin{itemize}
+    \item Case 1 (Baseline): Circular hole with radius r.
+    \item Case 2: Elliptical hole with major axis aligned with tensile loading direction.
+    \item Case 3: Elliptical hole with minor axis aligned with tensile loading direction.
+    \end{itemize}}
+\end{tcolorbox}
+
+
+
+\printbibliography
+
+\end{document}
+
