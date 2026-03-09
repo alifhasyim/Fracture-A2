@@ -1,12 +1,12 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.11.27)  6 MAR 2026 08:50
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.11.27)  9 MAR 2026 07:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **"c:/Users/Bagus Alifah Hasyim/Documents/Computational Engineering RUB/05 - 01
- Fracture Mechanics/_Assignment 2/Report/Fracture-A2/main.tex"
+ Fracture Mechanics/_Assignment 2/Report/Fracture-A2-1/main.tex"
 
 (c:/Users/Bagus Alifah Hasyim/Documents/Computational Engineering RUB/05 - 01 F
-racture Mechanics/_Assignment 2/Report/Fracture-A2/main.tex
+racture Mechanics/_Assignment 2/Report/Fracture-A2-1/main.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-29>
 
@@ -968,28 +968,170 @@ Package: xparse 2024-08-16 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
 ))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\
+pgfplots.sty
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplots.revision.tex)
+Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
+
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplots.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplotscore.code.tex
+\t@pgfplots@toka=\toks43
+\t@pgfplots@tokb=\toks44
+\t@pgfplots@tokc=\toks45
+\pgfplots@tmpa=\dimen304
+\c@pgfplots@coordindex=\count466
+\c@pgfplots@scanlineindex=\count467
+
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/sys\pgfplotssysgeneric.code.tex))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/libs\pgfplotslibrary.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/lib
+raries\pgflibraryfpu.code.tex)
+Package pgfplots: loading complementary utilities for your pgf version...
+\t@pgf@toka=\toks46
+\t@pgf@tokb=\toks47
+\t@pgf@tokc=\toks48
+
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/oldpgfcompatib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/util\pgfplotsutil.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/liststructure\pgfplotsliststructure.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/liststructure\pgfplotsliststructureext.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/liststructure\pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count468
+)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/liststructure\pgfplotsmatrix.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/numtable\pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count469
+\t@pgfplotstable@a=\toks49
+)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/liststructure\pgfplotsdeque.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/util\pgfplotsbinary.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/util\pgfplotsbinary.data.code.tex))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/util\pgfplotsutil.verb.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/libs\pgflibrarypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count470
+
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/sys\pgflibrarypgfplots.surfshading.pgfsys-xetex.def
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/sys\pgflibrarypgfplots.surfshading.pgfsys-dvipdfmx.def
+\c@pgfplotslibrarysurf@streamlen=\count471
+))))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/util\pgfplotscolormap.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/util\pgfplotscolor.code.tex))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplotsstackedplots.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplotsplothandlers.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplotsmeshplothandler.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplotsmeshplotimage.code.tex)))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplots.scaling.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplotscoordprocessing.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplots.errorbars.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplots.markers.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplotsticks.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s\pgfplots.paths.code.tex)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
+ntendlayer/tikz/libraries\tikzlibrarydecorations.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/mod
+ules\pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen305
+\pgfdecoratedremainingdistance=\dimen306
+\pgfdecoratedinputsegmentcompleteddistance=\dimen307
+\pgfdecoratedinputsegmentremainingdistance=\dimen308
+\pgf@decorate@distancetomove=\dimen309
+\pgf@decorate@repeatstate=\count472
+\pgfdecorationsegmentamplitude=\dimen310
+\pgfdecorationsegmentlength=\dimen311
+)
+\tikz@lib@dec@box=\box85
+)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
+ntendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/lib
+raries/decorations\pgflibrarydecorations.pathmorphing.code.tex))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
+ntendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/lib
+raries/decorations\pgflibrarydecorations.pathreplacing.code.tex))
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgfplot
+s/libs\tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count473
+\pgfplots@xmin@reg=\dimen312
+\pgfplots@xmax@reg=\dimen313
+\pgfplots@ymin@reg=\dimen314
+\pgfplots@ymax@reg=\dimen315
+\pgfplots@zmin@reg=\dimen316
+\pgfplots@zmax@reg=\dimen317
+)
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fro
+ntendlayer/tikz/libraries\tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Bagus Alifah Hasyim\AppData\Local\Programs\MiKTeX\tex/generic/pgf/lib
+raries\pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
 \llabelsep=\skip82
-\@quotelevel=\count466
-\@quotereset=\count467
- (main.aux)
+\@quotelevel=\count474
+\@quotereset=\count475
+ (main.aux
+
+LaTeX Warning: Label `fig:Dual_Plot' multiply defined.
+
+
+LaTeX Warning: Label `fig:Stress' multiply defined.
+
+
+LaTeX Warning: Label `fig:Stress' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
@@ -1035,7 +1177,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count468
+\c@lstlisting=\count476
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1052,43 +1194,92 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 63.
-Package biblatex Info: Reference segment=0 on input line 63.
-\c@llabel=\count469
+Package biblatex Info: Reference section=0 on input line 67.
+Package biblatex Info: Reference segment=0 on input line 67.
+
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
+
+\c@llabel=\count477
 
 
 [1
 
 ]
+File: images/Mesh.pdf Graphic file (type pdf)
+<use images/Mesh.pdf>
+
 
 [2]
 
 [3]
 
 [4]
+PGFPlots: reading {Visualization/resources/Case1.txt}
+
+Overfull \hbox (9.22607pt too wide) in paragraph at lines 305--306
+ [][] 
+ []
+
+
 
 [5]
+PGFPlots: reading {Visualization/resources/Case1.txt}
+PGFPlots: reading {Visualization/resources/Case1_Damage.txt}
 
-LaTeX Warning: Empty bibliography on input line 218.
+Overfull \hbox (15.68222pt too wide) in paragraph at lines 379--380
+ [][] 
+ []
 
 
 
-[6] (main.aux)
+[6]
+PGFPlots: reading {Visualization/resources/Case1.txt}
+PGFPlots: reading {Visualization/resources/Case1_Damage.txt}
+
+Overfull \hbox (15.68222pt too wide) in paragraph at lines 458--459
+ [][] 
+ []
+
+
+
+[7]
+File: images/Q2_StressS1.pdf Graphic file (type pdf)
+<use images/Q2_StressS1.pdf>
+File: images/Q2_StressS2.pdf Graphic file (type pdf)
+<use images/Q2_StressS2.pdf>
+File: images/Q2_StressS3.pdf Graphic file (type pdf)
+<use images/Q2_StressS3.pdf>
+
+
+[8]
+
+[9]
+
+LaTeX Warning: Empty bibliography on input line 523.
+
+
+
+[10] (main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-29>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25922 strings out of 405039
- 521073 string characters out of 5496419
- 1327585 words of memory out of 5000000
- 52248 multiletter control sequences out of 15000+600000
+ 36497 strings out of 405039
+ 874432 string characters out of 5496419
+ 1783902 words of memory out of 5000000
+ 62683 multiletter control sequences out of 15000+600000
  632369 words of font info for 69 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,8n,101p,824b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,17n,101p,853b,2163s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (6 pages).
+Output written on main.pdf (10 pages).
