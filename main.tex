@@ -68,7 +68,7 @@
 \maketitle
 
 \section*{Given Data}
-\hspace*{2em}In this section, the parameters value for the material properties, 
+\hspace{1em}In this section, the parameters value for the material properties, 
 that required by the author to calculate it based on the author's Immatrikulation Nummer, will be defined accordingly. To make
 the calculation detailed and transparent, each parameter will be derived step by step. 
 
@@ -102,12 +102,31 @@ the calculation detailed and transparent, each parameter will be derived step by
 \end{tcolorbox}
 
 
+\section{Introduction}
 
-\section{Introduction} 
+\hspace{1em}The main goal of this assignment is to study the damage mechanism implemented using the ductile damage model with
+pre-determined displacement failure from the defined mesh size. The damage model is introduced by creating a criterion such that the
+element deletion is achieved as the damage parameter reach D = 1. This measurement ensured the damage mesh element that underwent the damage is no
+longer have the load bearing capability, which also influence the overall specimen as well. 
+
+\hspace{1em}The task is divided into main three parts. The first one focuses on the material damage behavior and the comparison head to head between the
+extracted stress-strain curve and the damage parameter. Hence, the origin of the stress triaxiality coefficient is traced using the equation
+derivation from the hydrostatic and the equivalent stress depending on the stress state or the applied boundary condition in the specimen. 
+The discussion continued with the determination of the key deformation stages from the curve, highlighting the main critical
+event. A comparison of damage evolution and the stress-strain curve is also overviewed to see the mechanism of the damage development that accumulates
+throughout the damage state.
+
+\hspace{1em}Next task discusses the damage evolution and failure pattern in stress distribution manner. Hence, the damage propagation mechanism
+is the main discussion, comparing as well on how does the stress distribution grow by observing stress-strain evolution side-by-side. This give understanding
+on the damage mechanism itself in the geometry visual. The last task is mainly focuses on the influence of the shape and size of the hole to the
+stress distribution and the flow curve performance for each variation.   
 
 
 
 \section{Model Set up}
+
+\hspace{1em} In this chapter the material properties defined in Abaqus CAE and geometry set up with its boundary condition
+is discussed in following two separate chapters. 
 
 \subsection{Material Properties}
 
@@ -133,6 +152,24 @@ the calculation detailed and transparent, each parameter will be derived step by
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\centering
+\caption{Additional material properties.}
+\label{tab:Properties}
+\begin{tabular}{lc}
+    \toprule
+    Properties & Value \\ [0.5em]
+    \midrule
+    Young's Modulus (MPa) & 210000  \\[0.5em]
+    Poisson's Ratio & 0.3  \\[0.5em]
+    Fracture Strain & 0.35 \\[0.5em]
+    Stress Triaxiality & 0.33  \\[0.5em]
+    Strain Rate & 0.33  \\[0.5em]
+    Displacement at Failure &  0.0058  \\[0.5em]
+    \bottomrule
+\end{tabular}
+\end{table}
+
 
 
 
@@ -140,19 +177,41 @@ the calculation detailed and transparent, each parameter will be derived step by
 
 \subsection{Geometry and Boundary Conditions}
 
+\hspace{1em} Plate with a hole is used as the basic
+geometry to conduct the simulation. The boundary condition consists of a uniform displacement $u_y$ defined accross the
+upper plate region, fixed boundary condition in y or displacement direction applied in the lower part of the plate, and another fixed boundary condition
+to x direction applied in the right point of the plate, which shown in figure~\ref{fig:BC}.   
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/BoundaryCondition.pdf}
+    \caption{Boundary condition and dimension}
+    \label{fig:BC}
+\end{figure}
+
+
 
 
 
 \subsection{Mesh Set Up}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/Mesh.pdf}
+    \includegraphics[width=0.4\textwidth]{images/Mesh_Detail.pdf}
+    \caption{Mesh sizing and control for case 1 - 3. A global size of 0.09 mm is utilized and division type of mesh partition is applied for each
+    geometry side (120 partition for red full circle and 50 partition for each one line side of the square).}
+    \label{fig:Mesh_main}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/Mesh.pdf}
     \caption{Mesh configuration for the plate. A standard and linear CPS4 (4-node bilinear plane stress quadrilateral) mesh configuration is implemented.}
     \label{fig:Mesh_main}
 \end{figure}
 
 Based on the meshed plate, the smallest partition of the mesh have dimension of $0.00918 \times 0.0146 \text{ mm}$. Hence, the characteristic length
-can be obtained as follows:
+and failure displacement is obtained as follows:
 
 \begin{equation}
   \label{eq:characteristicLength}
@@ -163,9 +222,6 @@ can be obtained as follows:
   \label{eq:DisplacementFailure}
   u_f = 0.5 \times L_c = 0.0058 \text{ mm}
 \end{equation}
-
-\vspace{1em}
-Hence, according to equation~\ref{eq:DisplacementFailure} the failure displacement criterion can be defined.
 
 
 
@@ -311,7 +367,7 @@ for all of the numerical models.
   final stretch of u = 0.36 mm. The flow curve begins with the elastic deformation (point 0 - 1) up to the point where the elastic-plastic transition start to occur in stress 
   level of 250 MPa. The material continues to deform plastically, where plastic hardening exist due to the behavior defined in table~\ref{tab:FlowCurve}. As the material reach
   the maximum tensile stress, the load bearing capability start to deteriorate. The material softening will continue until the specimen is completely separate, as in point 3
-  the stress or load capability reach 0 stress. To study the damage behavior, following figure~\ref{fig:Dual_Plot} shows the damage evolution with presence of the material
+  the stress or load capability reach 0 stress. To study the damage behavior, following figure~\ref{fig:StressStrainDamage} shows the damage evolution with presence of the material
   degradation. 
 
 
@@ -323,7 +379,7 @@ for all of the numerical models.
         \begin{axis}[
             scale only axis,
             width=0.85\textwidth,
-            height=9cm,
+            height=11cm,
             xlabel={Strain},
             ylabel={Stress in MPa},
             axis y line*=left,
@@ -353,7 +409,7 @@ for all of the numerical models.
         \begin{axis}[
             scale only axis,
             width=0.85\textwidth,
-            height=9cm,
+            height=11cm,
             % --- ADD TITLE HERE ---
             title={\textbf{Engineering Stress-Strain and Damage Evolution for Q1 Plate}},
             title style={yshift=2.5em}, % Moves title up to avoid hitting top X-axis labels
@@ -377,8 +433,8 @@ for all of the numerical models.
             \addlegendentry{Damage Evolution}
         \end{axis}
     \end{tikzpicture}
-    \caption{Dual-axis plot: Stress-strain curve and the damage evolution over time comparison.}
-\label{fig:Dual_Plot}
+    \caption{Comparison of damage evolution (dash line) and stress-strain diagram (full line).}
+\label{fig:StressStrainDamage}
   \end{figure}
 
 \hspace{1em} During the damage mechanism in the marked red region, the stress starts to degrade slowly. It can be seen as well from the
@@ -404,7 +460,7 @@ following figure shows the calculated effective stiffness during the damage mech
         \begin{axis}[
             scale only axis,
             width=0.85\textwidth,
-            height=9cm,
+            height=11cm,
             xlabel={Strain},
             ylabel={Stress in MPa},
             axis y line*=left,
@@ -420,7 +476,49 @@ following figure shows the calculated effective stiffness during the damage mech
 
             \fill[red, opacity=0.1] (axis cs:0.025, -20) rectangle (axis cs:0.075, 300);
             
+            \draw[black, 
+                  line width=1pt] (axis cs:-0.004, 0) -- (axis cs:0.075, 0);
 
+            %% Triangle
+            \draw[black, 
+                  line width=1pt] (axis cs:0.0015, 50) -- (axis cs:0.0015, 250);
+            \draw[black, 
+                  line width=1pt] (axis cs:0.0005, 50) -- (axis cs:0.0015, 50);
+
+            \node[label={right:E}, inner sep=2.5pt] 
+            at (axis cs:0.001, 135) {};
+
+            %% Second Triangle
+            \draw[black, 
+                  line width=1pt] (axis cs:0.025, 50) -- (axis cs:0.025, 250);
+            \draw[black, 
+                  line width=1pt] (axis cs:0.024, 50) -- (axis cs:0.025, 50);
+
+            \node[label={right:E}, inner sep=2.5pt] 
+            at (axis cs:0.025, 135) {};
+
+            %% Third Triangle
+
+            \draw[black, 
+                  line width=1pt] (axis cs:0.035, 0) -- (axis cs:0.043, 100);
+
+            \draw[black, 
+                  line width=1pt] (axis cs:0.04, 25) -- (axis cs:0.04, 62);
+
+            \draw[black, 
+                  line width=1pt] (axis cs:0.037, 25) -- (axis cs:0.04, 25);
+
+            \node[label={right:(1-D)E}, inner sep=2.5pt] 
+            at (axis cs:0.04, 38) {};
+
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.0238, 0) -- (axis cs:0.025, 285.101);
+            
+            \node[label={right:Damage State}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.043, 100) {};
+            
+  
             
 
             \addlegendentry{Stress-Strain}
@@ -432,7 +530,7 @@ following figure shows the calculated effective stiffness during the damage mech
         \begin{axis}[
             scale only axis,
             width=0.85\textwidth,
-            height=9cm,
+            height=11cm,
             % --- ADD TITLE HERE ---
             title={\textbf{Engineering Stress-Strain and Damage Evolution for Q1 Plate}},
             title style={yshift=2.5em}, % Moves title up to avoid hitting top X-axis labels
@@ -453,11 +551,13 @@ following figure shows the calculated effective stiffness during the damage mech
         ]
             \addplot[color=black, line width=1.5pt, dashed] 
                 table{Visualization/resources/Case1_Damage.txt};
+
+            
             \addlegendentry{Damage Evolution}
         \end{axis}
     \end{tikzpicture}
-    \caption{Dual-axis plot: Stress-strain curve and the damage evolution over time comparison.}
-\label{fig:Dual_Plot}
+    \caption{Stiffness degradation visualization. Starting from the original stiffness $E$ until the stiffness start to decrease by $(1-D)$ multiplier.}
+\label{fig:StiffnessDegrade}
   \end{figure}
 
 
@@ -480,26 +580,116 @@ following figure shows the calculated effective stiffness during the damage mech
   \end{itemize}}
 \end{tcolorbox}
 
+\vspace{1em}
+
+\hspace{1em} Figure~\ref{fig:Case1} shows the contour stress plot in S22 direction for case 1 with the marked time frame in
+stress-strain curve visualized in figure~\ref{fig:Case1}. In the elastic region, denote in figure~\ref{fig:Case1}a,
+S22 distribution shows a small dominance stress concentration near the circular hole tip both in left and right side. As the stress increase, the 
+stress concentration begins to spread into larger area, which is shown in figure~\ref{fig:Case1}b. Shrinkage of the stress concentration
+area afterward observed in figure~\ref{fig:Case1}c and~\ref{fig:Case1}d, where the largest stress area begins to shift from
+the hole both corner. The first element deletion, indicating the initiation of damage stage, is observed in figure~\ref{fig:Case1}e. This element deletion
+is considered as the damage path, as this feature triggered by the fulfillment of the damage criterion that already defined in the material properties. The damage 
+continues to propagate shown in figure~\ref{fig:Case1}f -~\ref{fig:Case1}h, marking the final separation of
+the upper and lower plate in figure~\ref{fig:Case1}i.
+
+\hspace{1em} The early failure or sequential deterioration can be explained by the damage mechanism
+in the plate with a hole. As it observed throughout the process, the highest stress concentration started from the tip of the hole. Hence, the stress increased firstly
+for the element near the hole, where this area is considered as the area without a load bearing capability. This consequently accelerate the increase
+of damage parameter to 1, which follows by the element deletion afterward. Since the element deletion exist, thus increase the area without load bearing capability. This shifted 
+the stress concentration as the element deletion propagated subsequently throughout the plate as the element deletion
+continues to propagate. Therefore, a step-wise failure is observed since the element needs some time to reach the maximum damage value.
+
+\hspace{1em} The stress concentration plays a role in controlling the damage path direction. In this case, the stress concentration is built up in horizontal direction
+with respect to the hole. The propagation of damage then follows the highest stress concentration factor, since higher stress will eventually initiate damage
+faster, thus will trigger the element deletion criterion. This is proved in figure~\ref{fig:Case1}, as the damage
+propagation/element deletion follows the highest stress concentration position. Additional figure~\ref{fig:Case1_Plot} shows the plotted point of the contour plot in~\ref{fig:Case1} for each case in the flow curve.
+
+
+
+
+\newpage
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images/Q2_StressS1.pdf}
-    \caption{S22}
-    \label{fig:Stress}
+    \includegraphics[width=1\textwidth]{images/Q2_StressAll.pdf}
+    \caption{Contour plots for case 1 with flow curve visualization in figure~\ref{fig:Case1_Plot}}
+    \label{fig:Case1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images/Q2_StressS2.pdf}
-    \caption{S22}
-    \label{fig:Stress}
-\end{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=1\textwidth,
+            height=7cm,
+            xlabel={Strain},
+            ylabel={Stress in MPa},
+            grid=major,
+            % --- SETTING THE RANGE HERE ---
+            xmin=-0.004,       % Minimum value for X-axis
+            xmax=0.075,    % Maximum value for X-axis (shows the curve until the drop)
+            ymin=-20,       % You can also set Y limits
+            ymax=300,     % Sets the top of the graph slightly above the peak of 285
+    % ------------------------------
+            % Ensures the small decimals on the X-axis look clean
+            xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+        ]
+            \addplot[
+                color=black, % Changed color so you can see the update
+                line width=2pt,
+            ] 
+            % Pointing to the new subdirectory and skipping the text header
+            table{Visualization/resources/Case1.txt};
+            
+            %% Dash Line
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.0015, -20) -- (axis cs:0.0015, 300);
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.025, -20) -- (axis cs:0.025, 300);
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.0615, -20) -- (axis cs:0.0615, 300);
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{images/Q2_StressS3.pdf}
-    \caption{S22}
-    \label{fig:Stress}
-\end{figure}
+            % Node Symbol
+
+            \node[label={left:a}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0, 0) {};
+
+            \node[label={left:b}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0015, 248.634) {};
+
+            \node[label={south:c}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0115, 274.224) {};
+
+            \node[label={south west:d}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.025, 284.397) {};
+
+            \node[label={right:e}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0255, 279.495) {};
+
+            \node[label={right:f}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.027, 250.745) {};
+            
+            \node[label={left:g}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0395, 127.334) {};
+
+            \node[label={left:h}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.052, 27.6345) {};
+
+            \node[label={north west:i}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0615, 0) {};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Stress-strain curve marker for contour plots in figure~\ref{fig:Case1}.}
+    \label{fig:Case1_Plot}
+  \end{figure}
+
+
+
+
+
 
 %% ------------------------------------------------------------- %%
 %% ----------------------------- %% QUESTION 3 ----------------------------- %%
@@ -518,6 +708,324 @@ following figure shows the calculated effective stiffness during the damage mech
     \end{itemize}}
 \end{tcolorbox}
 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        
+        %% --- PRIMARY AXIS: STRESS-STRAIN CASE 1 ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=9cm,
+            xlabel={Strain},
+            ylabel={Stress in MPa},
+            axis y line*=left,
+            axis x line*=bottom,
+            xmin=-0.004, xmax=0.095,
+            ymin=-20, ymax=300,
+            grid=major,
+            xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+            legend style={at={(0.05,0.25)}, anchor=north west}
+        ]
+            \addplot[color=black, line width=2pt] 
+                table{Visualization/resources/Case1.txt};
+            \addlegendentry{Stress - Case 1}
+        \end{axis}
+
+        %% --- SECONDARY AXIS: DAMAGE CASE 1 ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=9cm,
+            % --- ADD TITLE HERE ---
+            title={\textbf{Engineering Stress-Strain and Damage Evolution for Each Cases}},
+            title style={yshift=2.5em}, % Moves title up to avoid hitting top X-axis labels
+            % ----------------------
+            % --- Independent Scales ---
+            xmin=-0.04, xmax=0.95,           % Normalized Time or separate X-data
+            ymin=-2/30, ymax=1.05,           % Damage (0 to 1)
+            axis y line*=right,         % Y-axis on the right
+            axis x line*=top,           % X-axis on the top
+            xlabel={Time in s},
+            ylabel={Damage Variable (D)},
+            ylabel style={align=center},
+            ylabel style={black},
+            xlabel style={black},
+            xticklabel style={black},
+            yticklabel style={black},
+            legend style={at={(0.05,0.15)}, anchor=north west}
+        ]
+            \addplot[color=black, line width=1.5pt, dashed] 
+                table{Visualization/resources/Case1_Damage.txt};
+            \addlegendentry{Dmg - Case 1}
+        \end{axis}
+
+        %% --- PRIMARY AXIS: STRESS-STRAIN CASE 2 ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=9cm,
+            xlabel={Strain},
+            ylabel={Stress in MPa},
+            axis y line*=left,
+            axis x line*=bottom,
+            xmin=-0.004, xmax=0.095,
+            ymin=-20, ymax=300,
+            xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+            legend style={at={(0.35,0.25)}, anchor=north west}
+        ]
+            \addplot[color=blue, line width=2pt] 
+                table{Visualization/resources/Case2.txt};
+            \addlegendentry{Stress - Case 2}
+        \end{axis}
+
+        %% --- SECONDARY AXIS: DAMAGE CASE 2 ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=9cm,
+            % --- ADD TITLE HERE ---
+            % ----------------------
+            % --- Independent Scales ---
+            xmin=-0.04, xmax=0.95,           % Normalized Time or separate X-data
+            ymin=-2/30, ymax=1.05,           % Damage (0 to 1)
+            axis y line*=right,         % Y-axis on the right
+            axis x line*=top,           % X-axis on the top
+            xlabel={Time in s},
+            ylabel={Damage Variable (D)},
+            ylabel style={align=center},
+            ylabel style={black},
+            xlabel style={black},
+            xticklabel style={black},
+            yticklabel style={black},
+            legend style={at={(0.35,0.15)}, anchor=north west}
+        ]
+            \addplot[color=blue, line width=1.5pt, dashed] 
+                table{Visualization/resources/Case2_Damage.txt};
+            \addlegendentry{Dmg - Case 2}
+        \end{axis}
+
+        %% --- PRIMARY AXIS: STRESS-STRAIN CASE 3 ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=9cm,
+            xlabel={Strain},
+            ylabel={Stress in MPa},
+            axis y line*=left,
+            axis x line*=bottom,
+            xmin=-0.004, xmax=0.095,
+            ymin=-20, ymax=300,
+            xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+            legend style={at={(0.65,0.25)}, anchor=north west}
+        ]
+            \addplot[color=red, line width=2pt] 
+                table{Visualization/resources/Case3.txt};
+            \addlegendentry{Stress - Case 3}         
+        \end{axis}
+
+        %% --- SECONDARY AXIS: DAMAGE CASE 3 ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=9cm,
+            % ----------------------
+            % --- Independent Scales ---
+            xmin=-0.04, xmax=0.95,           % Normalized Time or separate X-data
+            ymin=-2/30, ymax=1.05,           % Damage (0 to 1)
+            axis y line*=right,         % Y-axis on the right
+            axis x line*=top,           % X-axis on the top
+            xlabel={Time in s},
+            ylabel={Damage Variable (D)},
+            ylabel style={align=center},
+            ylabel style={black},
+            xlabel style={black},
+            xticklabel style={black},
+            yticklabel style={black},
+            legend style={at={(0.65,0.15)}, anchor=north west}
+        ]
+            \addplot[color=red, line width=1.5pt, dashed] 
+                table{Visualization/resources/Case3_Damage.txt};
+            \addlegendentry{Dmg - Case 3}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Comparison of damage evolution (dash line) and stress-strain diagram (full line) for case 1, case 2, and case 3.}
+\label{fig:ComparisonPlot}
+  \end{figure}
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Q2_StressAll-Case2.pdf}
+    \caption{Contour plots for case 2.}
+    \label{fig:Case2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=1\textwidth,
+            height=7cm,
+            xlabel={Strain},
+            ylabel={Stress in MPa},
+            grid=major,
+            % --- SETTING THE RANGE HERE ---
+            xmin=-0.004,       % Minimum value for X-axis
+            xmax=0.1,    % Maximum value for X-axis (shows the curve until the drop)
+            ymin=-20,       % You can also set Y limits
+            ymax=320,     % Sets the top of the graph slightly above the peak of 285
+    % ------------------------------
+            % Ensures the small decimals on the X-axis look clean
+            xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+        ]
+            \addplot[
+                color=black, % Changed color so you can see the update
+                line width=2pt,
+            ] 
+            % Pointing to the new subdirectory and skipping the text header
+            table{Visualization/resources/Case2.txt};
+            
+            %% Dash Line
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.0015, -20) -- (axis cs:0.0015, 330);
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.062, -20) -- (axis cs:0.062, 330);
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.088, -20) -- (axis cs:0.088, 330);
+
+            % Node Symbol
+
+            \node[label={left:a}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0005, 91.713) {};
+
+            \node[label={left:b}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0015, 246.418) {};
+
+            \node[label={south:c}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0115, 268.593) {};
+
+            \node[label={south west:d}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.027, 282.547) {};
+
+            \node[label={south:e}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.052, 290.53) {};
+
+            \node[label={right:f}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0625, 283.494) {};
+            
+            \node[label={right:g}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.064, 199.407) {};
+
+            \node[label={left:h}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0695, 115.79) {};
+
+            \node[label={north west:i}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0875, 3.98125) {};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Stress-strain curve marker for contour plots case 2.}
+    \label{fig:Case2_Plot}
+  \end{figure}
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Q2_StressAll-Case3.pdf}
+    \caption{Contour plots for case 2.}
+    \label{fig:Case3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=1\textwidth,
+            height=7cm,
+            xlabel={Strain},
+            ylabel={Stress in MPa},
+            grid=major,
+            % --- SETTING THE RANGE HERE ---
+            xmin=-0.004,       % Minimum value for X-axis
+            xmax=0.04,    % Maximum value for X-axis (shows the curve until the drop)
+            ymin=-20,       % You can also set Y limits
+            ymax=200,     % Sets the top of the graph slightly above the peak of 285
+    % ------------------------------
+            % Ensures the small decimals on the X-axis look clean
+            xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+        ]
+            \addplot[
+                color=black, % Changed color so you can see the update
+                line width=2pt,
+            ] 
+            % Pointing to the new subdirectory and skipping the text header
+            table{Visualization/resources/Case3.txt};
+            
+            %% Dash Line
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.0015, -20) -- (axis cs:0.0015, 300);
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.013, -20) -- (axis cs:0.013, 300);
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.035, -20) -- (axis cs:0.035, 300);
+
+            % Node Symbol
+
+            \node[label={left:a}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0005, 67.1431) {};
+
+            \node[label={left:b}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0015, 155.959) {};
+
+            \node[label={south:c}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0115, 176.05) {};
+
+            \node[label={north:d}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0145, 164.97) {};
+
+            \node[label={north:e}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.025, 68.3697) {};
+
+            \node[label={south:f}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.0255, 63.9011) {};
+
+            \node[label={south:g}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.027, 51.3047) {};
+            
+            \node[label={left:h}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.032, 12.9748) {};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Stress-strain curve marker for contour plots case 3.}
+    \label{fig:Case3_Plot}
+  \end{figure}
+
+\hspace{1em}As shown in the flow curve figure~\ref{fig:ComparisonPlot}, three of the distinguished holes create different curve behavior. Where for case 2, it has
+the largest fracture toughness, measured by the area below the curve and case 3 (horizontally-stretched hole) has the lowest fracture toughness. The fracture toughness correlate with the
+damage initiation, as it is proved by case 2 that has the most delayed damage initiation time compare to the other 2 cases. Comparing the damage degradation evolution mechanism, 
+case 1 have the flattest damage degradation, by examining the slope of the damage evolution from 0 to 1 compare to case 2 and case 3. 
+
+\hspace{1em}If it is to be compared the damage path between all cases, case 2 have the unique damage behavior compare to the others. As seen in figure~\ref{fig:Case2}, the element separation initiates inside the plate instead of in the surface plate hole.
+While case 1 and case 3 have the same damage initiation starting from the surface hole, putting a difference in the case 3 as it propagates earlier compare to case 1 according to figure~\ref{fig:Case1}. It is concluded that the hole with larger horizontal-stretched shape inside have the larger
+tendency to have a faster crack propagation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Q3_StressFlow.pdf}
+    \caption{Stress flow for different hole variation (horizontally-stretched)}
+    \label{fig:Stressflow}
+\end{figure}
+
+\hspace{1em}To explain the reason of such faster crack propagation in the larger horizontally-stretched hole, figure~\ref{fig:Stressflow} demonstrate the stress flow with the same applied stress 
+for different hole variation and no-hole specimen. As shown at most left side of the plate, the stress flow follows straight line, spanning across the plate. The stress flow only interested in non-free surface. This will change the line as a hole is introduced, for example in the middle picture figure~\ref{fig:Stressflow}. The stress flow line is deviate, avoiding the free surface. Increasing sizes of the hole perpendicular to the stress line will deviate eventually the stress flow line, as the line is grouped tighter to the non-free surface (shown in figure~\ref{fig:Stressflow} right side). 
+This leads a higher stress generation, which leads to higher tendency to generate crack faster and decisively. 
 
 
 \printbibliography
